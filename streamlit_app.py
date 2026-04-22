@@ -11,7 +11,7 @@ from interest_calculator import show_interest_calculator
 
 st.set_page_config(
     page_title="True Balance — Financial Tracker",
-    page_icon="💰",
+    page_icon="💴"
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -32,7 +32,7 @@ st.markdown(
 
 
 def show_dashboard() -> None:
-    st.header("🏠 Dashboard")
+    st.header("Dashboard")
     st.markdown("Welcome to **True Balance** — your personal financial companion.")
 
     expenses_df = load_expenses()
@@ -50,17 +50,17 @@ def show_dashboard() -> None:
     remaining = total_budget - total_expenses
 
     col1, col2, col3, col4 = st.columns(4)
-    col1.metric("💸 Total Expenses", f"₹{total_expenses:,.2f}")
-    col2.metric("🎯 Total Budget", f"₹{total_budget:,.2f}")
-    col3.metric("✅ Remaining Budget", f"₹{remaining:,.2f}", delta=f"₹{remaining:,.2f}")
-    col4.metric("📋 Expense Entries", num_entries)
+    col1.metric("Total Expenses", f"₹{total_expenses:,.2f}")
+    col2.metric("Total Budget", f"₹{total_budget:,.2f}")
+    col3.metric("Remaining Budget", f"₹{remaining:,.2f}", delta=f"₹{remaining:,.2f}")
+    col4.metric("Expense Entries", num_entries)
 
     st.divider()
 
     col_left, col_right = st.columns(2)
 
     with col_left:
-        st.subheader("📊 Expenses by Category")
+        st.subheader("Expenses by Category")
         if not expenses_df.empty:
             cat_totals = expenses_df.groupby("Category")["Amount"].sum().reset_index()
             fig = px.pie(
@@ -77,7 +77,7 @@ def show_dashboard() -> None:
             st.info("No expense data yet. Start by adding some expenses!")
 
     with col_right:
-        st.subheader("📅 Monthly Spending Trend")
+        st.subheader("Monthly Spending Trend")
         if not expenses_df.empty:
             month_order = {m: i for i, m in enumerate(MONTHS)}
             month_totals = expenses_df.groupby("Month")["Amount"].sum().reset_index()
@@ -97,7 +97,7 @@ def show_dashboard() -> None:
             st.info("No monthly data yet.")
 
     if not expenses_df.empty and not budgets_df.empty:
-        st.subheader("⚖️ Budget vs Actual")
+        st.subheader("Budget vs Actual")
         actual_by_month = expenses_df.groupby("Month")["Amount"].sum().reset_index()
         actual_by_month.columns = ["Month", "Actual"]
         comparison = budgets_df.merge(actual_by_month, on="Month", how="left").fillna(0)
@@ -114,7 +114,7 @@ def show_dashboard() -> None:
         st.plotly_chart(fig, use_container_width=True)
 
     if not expenses_df.empty:
-        st.subheader("🕐 Recent Transactions")
+        st.subheader("Recent Transactions")
         recent = expenses_df.tail(10).iloc[::-1].copy()
         recent["Amount"] = recent["Amount"].apply(lambda x: f"₹{x:,.2f}")
         st.dataframe(recent, use_container_width=True, hide_index=True)
@@ -122,13 +122,13 @@ def show_dashboard() -> None:
 
 def main() -> None:
     with st.sidebar:
-        st.title("💰 True Balance")
+        st.title("True Balance")
         st.markdown("*Your personal financial tracker*")
         st.divider()
 
         page = st.radio(
             "Navigate",
-            ["🏠 Dashboard", "📊 Expense Tracker", "💰 Budget Tracker", "🧮 Interest Calculator"],
+            ["Dashboard", "Expense Tracker", "Budget Tracker", "Interest Calculator"],
             label_visibility="collapsed",
         )
 
@@ -151,13 +151,13 @@ def main() -> None:
         st.divider()
         st.caption("© 2024 True Balance")
 
-    if page == "🏠 Dashboard":
+    if page == "Dashboard":
         show_dashboard()
-    elif page == "📊 Expense Tracker":
+    elif page == "Expense Tracker":
         show_expense_tracker()
-    elif page == "💰 Budget Tracker":
+    elif page == "Budget Tracker":
         show_budget_tracker()
-    elif page == "🧮 Interest Calculator":
+    elif page == "Interest Calculator":
         show_interest_calculator()
 
 
