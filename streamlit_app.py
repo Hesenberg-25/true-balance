@@ -123,7 +123,7 @@ def show_dashboard() -> None:
 def main() -> None:
     with st.sidebar:
         st.title("True Balance")
-        st.markdown("**Your personal financial tracker**")
+        st.markdown("**Your Personal Financial Tracker**")
         st.divider()
 
         page = st.radio(
@@ -149,7 +149,6 @@ def main() -> None:
                     st.error("Amount must be > 0")
 
         st.divider()
-        st.caption("© 2024 True Balance")
 
     if page == "Dashboard":
         show_dashboard()
