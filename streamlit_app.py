@@ -33,7 +33,7 @@ st.markdown(
 
 def show_dashboard() -> None:
     st.header("Dashboard")
-    st.markdown("Welcome to **True Balance** — your personal financial companion.")
+    st.markdown("Welcome to **True Balance** — your Personal Financial Companion.")
 
     expenses_df = load_expenses()
     budgets_df = load_budgets()
@@ -123,7 +123,7 @@ def show_dashboard() -> None:
 def main() -> None:
     with st.sidebar:
         st.title("True Balance")
-        st.markdown("*Your personal financial tracker*")
+        st.markdown("**Your personal financial tracker**")
         st.divider()
 
         page = st.radio(
