@@ -11,7 +11,7 @@ from interest_calculator import show_interest_calculator
 
 st.set_page_config(
     page_title="True Balance — Financial Tracker",
-    page_icon="💴"
+    page_icon="💴",
     layout="wide",
     initial_sidebar_state="expanded",
 )
