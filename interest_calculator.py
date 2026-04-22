@@ -5,14 +5,14 @@ import math
 
 
 def show_interest_calculator() -> None:
-    st.header("🧮 Interest & Financial Calculator")
+    st.header("Interest & Financial Calculator")
 
     tab_si, tab_ci, tab_loan, tab_tax, tab_sip = st.tabs([
-        "📐 Simple Interest",
-        "📈 Compound Interest",
-        "🏦 Loan Amortization",
-        "💼 Income Tax",
-        "💹 SIP Calculator",
+        "Simple Interest",
+        "Compound Interest",
+        "Loan Amortization",
+        "Income Tax",
+        "SIP Calculator",
     ])
 
     with tab_si:
@@ -167,7 +167,7 @@ def _loan_amortization() -> None:
             )
             st.plotly_chart(fig, use_container_width=True)
 
-            with st.expander("📋 Full Amortization Schedule"):
+            with st.expander("Full Amortization Schedule"):
                 st.dataframe(
                     schedule_df.style.format({
                         "EMI (₹)": "₹{:,.2f}",
