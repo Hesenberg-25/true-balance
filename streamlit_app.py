@@ -33,7 +33,7 @@ st.markdown(
 
 def show_dashboard() -> None:
     st.header("Dashboard")
-    st.markdown("Welcome to **True Balance** — your Personal Financial Companion.")
+    st.markdown("Welcome to **True Balance** — Personal Financial Companion.")
 
     expenses_df = load_expenses()
     budgets_df = load_budgets()
